@@ -1,0 +1,44 @@
+# Student Grade Tracker
+
+students = {}
+
+def add_student(name):
+    students[name] = {}
+
+def add_grade(name, subject, grade):
+    students[name][subject] = grade
+
+def display_grades(name):
+    print(f"Grades for {name}:")
+    for subject, grade in students[name].items():
+        print(f"{subject}: {grade}")
+    average = sum(students[name].values()) / len(students[name])
+    print(f"Average: {average:.2f}")
+
+def main():
+    while True:
+        print("\n1. Add Student")
+        print("2. Add Grade")
+        print("3. Display Grades")
+        print("4. Exit")
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            name = input("Enter student name: ")
+            add_student(name)
+        elif choice == "2":
+            name = input("Enter student name: ")
+            subject = input("Enter subject: ")
+            grade = float(input("Enter grade: "))
+            add_grade(name, subject, grade)
+        elif choice == "3":
+            name = input("Enter student name: ")
+            display_grades(name)
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Please choose again.")
+
+
+if __name__ == "__main__":
+    main()
